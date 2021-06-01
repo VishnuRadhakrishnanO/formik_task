@@ -1,4 +1,5 @@
 
+
 import { Formik, Form, Field, useFormik } from 'formik';
 import { useContext, useEffect, useState } from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
@@ -6,24 +7,16 @@ import UserContext from './usercontext';
 
 
 export default function UserCreate() {
-    let UserData = useContext(UserContext)
-    let [firstName, setfirstName] = useState("")
-    let [lastName, setlastName] = useState("")
-    let [email, setemail] = useState("")
-    let [password, setpassword] = useState("")  
 
-    let UserSubmit = async (e) => {
- 
-console.log(e.email)
+    let UserSubmit = async (values) => {
 
-        UserData.setuserList([...UserData.userList,
 
-        {
+        let {
             firstName,
             lastName,
             email,
             password
-        }])
+        } = values;
 
         await fetch("https://5ff9537617386d0017b51c4a.mockapi.io/test/users", {
 
@@ -39,12 +32,8 @@ console.log(e.email)
                 "Content-type": "application/json"
             }
         })
-
+alert ("User is added")
     }
-
-
-
-
 
 
     let validate = (values) => {
@@ -58,7 +47,7 @@ console.log(e.email)
         if (!values.email) {
             errors.email = 'Required';
         }
-        if (!values.email) {
+        if (!values.password) {
             errors.password = 'Required';
         }
         if (values.password.length < 8) {
@@ -76,8 +65,7 @@ console.log(e.email)
         },
         validate,
         onSubmit: values => {
-            alert(JSON.stringify(values));
-UserSubmit(values)
+            UserSubmit(values)
         },
 
     });
@@ -109,7 +97,7 @@ UserSubmit(values)
                 <div className="row">
                     <div className="col-lg-6">
                         <label>Email</label>
-                        <input className="form-control" name="email" value={formik.values.email} onChange={formik.handleChange}  ></input>
+                        <input className="form-control" name="email" value={formik.values.email} onChange={formik.handleChange} ></input>
                         {formik.errors.email ? <span class="text-danger">Enter Email</span> : null}
                     </div>
 
