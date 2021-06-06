@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { useContext, useEffect, useState } from 'react';
+
+import { useEffect} from 'react';
 export default function UserDelete(props) {
 
     useEffect(async (e) => {

@@ -20,7 +20,7 @@ export default function Sidebar(){
 
            
             <li class="nav-item active">
-                <Link to="/dashboard" class="nav-link" >
+                <Link to="/" class="nav-link" >
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></Link>
             </li>

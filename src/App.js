@@ -37,7 +37,7 @@ function App() {
           <div class="container-fluid">
 
               <Switch>
-                <Route path="/dashboard" component={Dashboard} exact={true} />
+                <Route path="/" component={Dashboard} exact={true} />
                 <Route path="/userlist" component={UserList} exact={true} />
                 <Route path="/useredit/:id" component={UserEdit} exact={true} />
                 <Route path="/usercreate" component={UserCreate} exact={true} />
